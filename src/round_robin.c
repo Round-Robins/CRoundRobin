@@ -35,6 +35,8 @@ bool RoundRobinInit() {
 	return ret;
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wmissing-noreturn"
 void RoundRobinStart() {
 #if RECORD_TASK_TIMES == 1
 	static uint32_t taskTime = 0;
@@ -62,6 +64,7 @@ void RoundRobinStart() {
 		}
 	}
 }
+#pragma clang diagnostic pop
 
 uint16_t GetRoundRobinLoading() {
 	uint16_t percentLoad = 0;
