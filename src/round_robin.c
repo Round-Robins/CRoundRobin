@@ -27,8 +27,9 @@ bool RoundRobinTaskCreate(RRTask_T* task) {
 
 bool RoundRobinInit() {
 	bool ret = true;
+	uint16_t i;
 
-	for (uint16_t i = 0; i < NUMBER_OF_TASKS; i++) {
+	for (i = 0; i < NUMBER_OF_TASKS; i++) {
 		Tasks[i].counter = Tasks[i].offset;
 	}
 	return ret;
@@ -38,9 +39,10 @@ void RoundRobinStart() {
 #if RECORD_TASK_TIMES == 1
 	static uint32_t taskTime = 0;
 #endif
+    uint16_t i;
 	for (;;) {
 		if (isTimerTriggered()) {
-			for (uint16_t i = 0; i < NUMBER_OF_TASKS; i++) {
+			for (i = 0; i < NUMBER_OF_TASKS; i++) {
 				if (++Tasks[i].counter >= Tasks[i].period_count) {
 					Tasks[i].counter = 0;
 #if RECORD_TASK_TIMES == 1
@@ -63,8 +65,9 @@ void RoundRobinStart() {
 
 uint16_t GetRoundRobinLoading() {
 	uint16_t percentLoad = 0;
+	uint16_t i;
 
-	for(uint8_t i = 0; i < NUMBER_OF_TASKS; i++)
+	for(i = 0; i < NUMBER_OF_TASKS; i++)
 	{
 
 	}
