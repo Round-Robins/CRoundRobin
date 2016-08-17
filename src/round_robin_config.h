@@ -2,13 +2,17 @@
 #ifndef ROUND_ROBIN_CONFIG_H_
 #define ROUND_ROBIN_CONFIG_H_
 
-#define TASK_PERIOD_MS (0.001)
+#define TASK_PERIOD_MS (1)
+
+#define CPU_LOADING_PERIOD_MS (1000)
 
 #define CALIBRATE_LOADING
 
 #ifndef NUMBER_OF_TASKS
 #define NUMBER_OF_TASKS (1)
 #endif
+
+#define ONLY_ALLOW_ONE_TASK_PER_CYCLE
 
 //#define USE_IDLE_TASK
 
