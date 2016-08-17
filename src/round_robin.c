@@ -1,10 +1,3 @@
-/*
- * round_robin.c
- *
- *  Created on: Apr 28, 2016
- *      Author: lucas
- */
-
 #include "round_robin.h"
 
 static RRTask_T Tasks[NUMBER_OF_TASKS] = { };
@@ -38,7 +31,7 @@ bool RoundRobinInit() {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 void RoundRobinStart() {
-#if RECORD_TASK_TIMES == 1
+#if RECORD_TASK_TIMES
 	static uint32_t taskTime = 0;
 #endif
     uint16_t i;
@@ -47,18 +40,18 @@ void RoundRobinStart() {
 			for (i = 0; i < NUMBER_OF_TASKS; i++) {
 				if (++Tasks[i].counter >= Tasks[i].period_count) {
 					Tasks[i].counter = 0;
-#if RECORD_TASK_TIMES == 1
+#if RECORD_TASK_TIMES
 					taskTime = get_timer_counts();
 #endif
 					Tasks[i].callback();
-#if RECORD_TASK_TIMES == 1
+#if RECORD_TASK_TIMES
 					Tasks[i].task_time = taskTime - get_timer_counts();
 #endif
 					break; // Only run one task per loop
 				}
 			}
 		} else {
-#if USE_IDLE_TASK == 1
+#if USE_IDLE_TASK
 			RoundRobinIdle();
 #endif
 		}

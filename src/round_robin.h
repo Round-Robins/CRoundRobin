@@ -1,10 +1,3 @@
-/*
- * round_robin.h
- *
- *  Created on: Apr 28, 2016
- *      Author: lucas
- */
-
 #ifndef ROUND_ROBIN_H_
 #define ROUND_ROBIN_H_
 
