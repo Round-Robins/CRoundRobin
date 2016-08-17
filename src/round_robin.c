@@ -15,7 +15,6 @@
 #include "round_robin.h"
 
 static RRTask_T Tasks[NUMBER_OF_TASKS] = { };
-static bool timer_is_triggered = false;
 static bool
 isTimerTriggered(void);
 
@@ -50,7 +49,6 @@ void RoundRobinStart() {
 #endif
     int i;
 	for (;;) {
-		if (isTimerTriggered()) {
 			for (i = 0; i < NUMBER_OF_TASKS; i++) {
 				if (++Tasks[i].counter >= Tasks[i].period_count) {
 					Tasks[i].counter = 0;
@@ -84,9 +82,6 @@ int GetRoundRobinLoading() {
 }
 
 void TimerTrigger() {
-	timer_is_triggered = true;
 }
 
-static bool isTimerTriggered() {
-	return timer_is_triggered;
 }
