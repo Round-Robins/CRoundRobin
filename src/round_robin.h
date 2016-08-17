@@ -15,7 +15,6 @@
 #ifndef ROUND_ROBIN_H_
 #define ROUND_ROBIN_H_
 
-#include "round_robin_config.h"
 #include <stdbool.h>
 
 typedef struct RRTask_S {
