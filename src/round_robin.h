@@ -3,15 +3,14 @@
 
 #include "round_robin_config.h"
 #include <stdbool.h>
-#include <stdint.h>
 
 typedef struct RRTask_S {
-	uint16_t period_ms;
-	uint16_t offset;
+	int period_ms;
+	int offset;
 	void (*callback)();
-	uint32_t counter;
-	uint32_t period_count;
-	uint32_t task_time;
+	long counter;
+	long period_count;
+	long task_time;
 } RRTask_T;
 
 #define RRTASK(func) task_##func
@@ -24,11 +23,11 @@ bool RoundRobinInit(void);
 
 void RoundRobinStart(void);
 
-uint16_t GetRoundRobinLoading(void);
+int GetRoundRobinLoading(void);
 
 void TimerTrigger(void);
 
-extern uint32_t GetTimerCounts(void);
+extern long GetTimerCounts(void);
 
 extern void RoundRobinIdle(void);
 

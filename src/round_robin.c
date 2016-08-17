@@ -6,7 +6,7 @@ static bool
 isTimerTriggered(void);
 
 bool RoundRobinTaskCreate(RRTask_T* task) {
-	static uint16_t assignedTasks = 0;
+	static int assignedTasks = 0;
 	bool isGood = true;
 
 	if (assignedTasks < NUMBER_OF_TASKS && task->period_count > 0) {
@@ -20,7 +20,7 @@ bool RoundRobinTaskCreate(RRTask_T* task) {
 
 bool RoundRobinInit() {
 	bool ret = true;
-	uint16_t i;
+	int i;
 
 	for (i = 0; i < NUMBER_OF_TASKS; i++) {
 		Tasks[i].counter = Tasks[i].offset;
@@ -32,9 +32,9 @@ bool RoundRobinInit() {
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 void RoundRobinStart() {
 #ifdef RECORD_TASK_TIMES
-	static uint32_t taskTime = 0;
+	static long taskTime = 0;
 #endif
-    uint16_t i;
+    int i;
 	for (;;) {
 		if (isTimerTriggered()) {
 			for (i = 0; i < NUMBER_OF_TASKS; i++) {
@@ -59,9 +59,9 @@ void RoundRobinStart() {
 }
 #pragma clang diagnostic pop
 
-uint16_t GetRoundRobinLoading() {
-	uint16_t percentLoad = 0;
-	uint16_t i;
+int GetRoundRobinLoading() {
+	int percentLoad = 0;
+	int i;
 
 	for(i = 0; i < NUMBER_OF_TASKS; i++)
 	{
