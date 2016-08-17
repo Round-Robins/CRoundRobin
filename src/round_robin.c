@@ -31,7 +31,7 @@ bool RoundRobinInit() {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 void RoundRobinStart() {
-#if RECORD_TASK_TIMES
+#ifdef RECORD_TASK_TIMES
 	static uint32_t taskTime = 0;
 #endif
     uint16_t i;
@@ -40,11 +40,11 @@ void RoundRobinStart() {
 			for (i = 0; i < NUMBER_OF_TASKS; i++) {
 				if (++Tasks[i].counter >= Tasks[i].period_count) {
 					Tasks[i].counter = 0;
-#if RECORD_TASK_TIMES
+#ifdef RECORD_TASK_TIMES
 					taskTime = get_timer_counts();
 #endif
 					Tasks[i].callback();
-#if RECORD_TASK_TIMES
+#ifdef RECORD_TASK_TIMES
 					Tasks[i].task_time = taskTime - get_timer_counts();
 #endif
 					break; // Only run one task per loop

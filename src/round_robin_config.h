@@ -10,16 +10,10 @@
 #define NUMBER_OF_TASKS (1)
 #endif
 
-#ifndef USE_IDLE_TASK
-#define USE_IDLE_TASK
-#endif
+//#define USE_IDLE_TASK
 
-#ifndef RECORD_TASK_TIMES
-#define RECORD_TASK_TIMES
-#endif
+//#define RECORD_TASK_TIMES
 
-#ifndef ONLY_RECORD_MAX_TASK_TIME
-#define ONLY_RECORD_MAX_TASK_TIME
-#endif
+//#define ONLY_RECORD_MAX_TASK_TIME
 
 #endif /* ROUND_ROBIN_CONFIG_H_ */
