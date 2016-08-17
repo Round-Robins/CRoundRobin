@@ -12,8 +12,6 @@
 #define NUMBER_OF_TASKS (1)
 #endif
 
-#define ONLY_ALLOW_ONE_TASK_PER_CYCLE
-
 //#define USE_IDLE_TASK
 
 //#define RECORD_TASK_TIMES

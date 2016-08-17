@@ -47,10 +47,6 @@ void RoundRobinStart() {
 #ifdef RECORD_TASK_TIMES
 					Tasks[i].task_time = taskTime - GetTimerCounts();
 #endif
-
-#ifdef ONLY_ALLOW_ONE_TASK_PER_CYCLE
-					break; // Only run one task per loop
-#endif
 				}
 			}
 		} else {
