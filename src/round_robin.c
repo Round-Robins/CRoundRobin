@@ -13,6 +13,7 @@
  */
 
 #include "round_robin.h"
+#include "round_robin_config.h"
 
 static RRTask_T Tasks[NUMBER_OF_TASKS] = { };
 static bool timerIsTriggered = false;
