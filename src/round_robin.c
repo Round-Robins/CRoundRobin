@@ -42,8 +42,8 @@ bool RoundRobinInit() {
 	return ret;
 }
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wmissing-noreturn"
+//#pragma clang diagnostic push
+//#pragma clang diagnostic ignored "-Wmissing-noreturn"
 void RoundRobinStart() {
 #ifdef RECORD_TASK_TIMES
 	static long taskTime = 0;
@@ -70,7 +70,7 @@ void RoundRobinStart() {
 		}
 	}
 }
-#pragma clang diagnostic pop
+//#pragma clang diagnostic pop
 
 int GetRoundRobinLoading() {
 	int percentLoad = 0;
