@@ -48,7 +48,7 @@ void RoundRobinStart() {
 #ifdef RECORD_TASK_TIMES
 	static long taskTime = 0;
 #endif
-    int i;
+	int i;
 	for (;;) {
 		if (IsTimerTriggered()) {
 			for (i = 0; i < NUMBER_OF_TASKS; i++) {
@@ -63,27 +63,29 @@ void RoundRobinStart() {
 #endif
 				}
 			}
-		} else {
-#if USE_IDLE_TASK
-			RoundRobinIdle();
-#endif
 		}
+#if USE_IDLE_TASK
+		else {
+
+			RoundRobinIdle();
+		}
+#endif
 	}
 }
 //#pragma clang diagnostic pop
 
-int GetRoundRobinLoading() {
+int RoundRobinGetLoading() {
 	int percentLoad = 0;
 	int i;
 
-	for(i = 0; i < NUMBER_OF_TASKS; i++)
-    {
-        percentLoad += Tasks[i].task_time * (CPU_LOADING_PERIOD_MS / Tasks[i].period_ms);
-    }
+	for (i = 0; i < NUMBER_OF_TASKS; i++) {
+		percentLoad += Tasks[i].task_time
+				* (CPU_LOADING_PERIOD_MS / Tasks[i].period_ms);
+	}
 	return percentLoad;
 }
 
-void TimerTrigger() {
+void RoundRobinTimerTrigger() {
 	timerIsTriggered = true;
 }
 

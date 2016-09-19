@@ -36,11 +36,11 @@ bool RoundRobinInit(void);
 
 void RoundRobinStart(void);
 
-int GetRoundRobinLoading(void);
+int RoundRobinGetLoading(void);
 
-void TimerTrigger(void);
+void RoundRobinTimerTrigger(void);
 
-extern long GetTimerCounts(void);
+extern long RoundRobinGetTimerCounts(void);
 
 extern void RoundRobinIdle(void);
 
